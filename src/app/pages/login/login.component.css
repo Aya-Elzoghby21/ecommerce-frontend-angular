@@ -1,0 +1,97 @@
+/* الصفحة كلها */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* الكارت الأساسي */
+form {
+  background: #fff;
+  padding: 40px 35px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* العنوان */
+form h2 {
+  text-align: center;
+  color: #4f46e5;
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+/* حقول الإدخال */
+form input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+form input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 4px rgba(79, 70, 229, 0.3);
+}
+
+/* الزر */
+form button {
+  background-color: #4f46e5;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background-color: #4338ca;
+}
+
+/* رسائل الخطأ */
+small {
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: -10px;
+}
+
+/* رسالة الخطأ العامة */
+.error-box {
+  background-color: #fee2e2;
+  border: 1px solid #f87171;
+  color: #b91c1c;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* نص التسجيل */
+p {
+  text-align: center;
+  color: #555;
+  font-size: 14px;
+}
+
+p a {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
