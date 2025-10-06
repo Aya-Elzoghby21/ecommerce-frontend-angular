@@ -1,59 +1,147 @@
-# Frontend
+# 🛍️ E-Commerce Frontend (Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+This is the **frontend** of an E-Commerce web application built using **Angular 18** and connected to a **.NET Web API backend**.  
+The app includes secure **JWT authentication**, **product listing with pagination**, and a clean, responsive UI.  
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Features
+- 🔐 **Login with JWT Authentication**
+- 🧭 **Protected routes using AuthGuard**
+- 🛒 **Product listing with pagination**
+- 🎨 **Modern, responsive UI with shared Navbar & Footer**
+- ⚡ **State management using RxJS BehaviorSubject**
+- ✅ **Integration & E2E testing with Cypress**
+- 🧱 **Clean architecture with core / shared / features structure**
 
+---
+
+## 🧠 Tech Stack
+| Category | Technology |
+|-----------|-------------|
+| Frontend Framework | Angular 18 |
+| Language | TypeScript |
+| State Management | RxJS |
+| Styling | SCSS |
+| Testing | Cypress |
+| Build Tool | Angular CLI |
+
+---
+
+## 📁 Project Structure
+
+src/
+┣ app/
+┃ ┣ core/
+┃ ┃ ┣ models/
+┃ ┃ ┃ ┣ auth.dto.ts
+┃ ┃ ┃ ┗ product.model.ts
+┃ ┃ ┣ services/
+┃ ┃ ┃ ┣ auth.service.ts
+┃ ┃ ┃ ┗ product.service.ts
+┃ ┣ features/
+┃ ┃ ┣ login/
+┃ ┃ ┃ ┣ login.component.ts
+┃ ┃ ┃ ┣ login.component.html
+┃ ┃ ┃ ┗ login.component.scss
+┃ ┃ ┣ products/
+┃ ┃ ┃ ┣ products.component.ts
+┃ ┃ ┃ ┣ products.component.html
+┃ ┃ ┃ ┗ products.component.scss
+┃ ┣ shared/
+┃ ┃ ┣ navbar/
+┃ ┃ ┃ ┗ navbar.component.ts
+┃ ┃ ┣ footer/
+┃ ┃ ┃ ┗ footer.component.ts
+┣ environments/
+┃ ┣ environment.ts
+┃ ┗ environment.prod.ts
+┣ assets/
+┗ main.ts
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1️⃣ Clone the repository
 ```bash
-ng serve
-```
+git clone https://github.com/Aya-Elzoghby21/ecommerce-frontend-angular.git
+cd ecommerce-frontend-angular
+### 2️⃣ Install dependencies
+npm install
+### 3️⃣ Configure API URL
+Edit your src/environments/environment.ts file to match your backend URL:
+export const environment = {
+  apiUrl: 'https://localhost:7188/api',
+  production: false
+};
+### 4️⃣ Run the application
+ng serve -o
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 🧪 Testing with Cypress
+#### 1️⃣ Install Cypress
+npm install cypress --save-dev
 
-## Code scaffolding
+#### 2️⃣ Add scripts to package.json
+"scripts": {
+  "cypress:open": "cypress open",
+  "cypress:run": "cypress run"
+}
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+🧩 Example test file: cypress/e2e/login.spec.js
+describe('Login -> Products flow', () => {
+  it('logs in and loads products', () => {
+    cy.visit('http://localhost:4200/login');
+    cy.get('input[formcontrolname="usernameOrEmail"]').type('aya22'); 
+    cy.get('input[formcontrolname="password"]').type('Aya@123');
+    cy.contains('Login').click();
+    cy.url().should('include', '/products');
+    cy.get('.products-grid .card').its('length').should('be.greaterThan', 0);
+  });
+});
 
-```bash
-ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+To run the test:
 
-```bash
-ng generate --help
-```
+npm run cypress:open
 
-## Building
+🧩 Example Features in the App
+🔐 Login Page
 
-To build the project run:
+Reactive form validation (required username & password)
 
-```bash
-ng build
-```
+Calls the API: POST /api/auth/login
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Stores JWT in localStorage
 
-## Running unit tests
+Redirects to /products on success
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+🛒 Products Page
 
-```bash
-ng test
-```
+Fetches data from /api/Products
 
-## Running end-to-end tests
+Displays product cards with name, image, price, and discount
 
-For end-to-end (e2e) testing, run:
+Supports pagination
 
-```bash
-ng e2e
-```
+Includes a shared Navbar & Footer
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Logout button clears JWT token
 
-## Additional Resources
+🧱 Architecture Overview
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The project follows a clean modular structure inspired by feature-based architecture:
+
+core/ → business logic, models, services
+
+features/ → specific pages or modules (login, products)
+
+shared/ → reusable UI components (navbar, footer)
+
+environments/ → API URLs and configuration
+
+👩‍💻 Author
+
+Aya El-Zoghby
+Full Stack Developer (.NET & Angular)
+📧 ayaelzoghby651@gmail.com
